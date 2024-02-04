@@ -9,3 +9,7 @@ pnpm create vite my-vue-app --template react # (or react-ts)
 npx create-next-app my-app
 ```
 
+## How to run
+```bash
+pnpm run dev
+```
