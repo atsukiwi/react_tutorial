@@ -1,4 +1,16 @@
-# React + TypeScript + Vite
+# My Tic Tac Toe TS
+
+## How to create this project
+
+```bash
+pnpm create vite my-tic-tac-toe-ts
+cd my-tic-tac-toe-ts
+pnpm install
+pnpm run dev
+```
+
+
+##  React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
