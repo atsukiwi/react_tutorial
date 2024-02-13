@@ -2,13 +2,25 @@ import React, { useState } from "react";
 import "./App.css";
 
 // 型定義を追加
+// これはユニオン型と呼ばれ、各"X"等はリテラル型と呼ばれる
 type SquareValue = "X" | "O" | null;
 
+// onSquareClickは関数に対する型定義
+// ()は引数がないこと、voidは戻り値がないことを示す
 interface SquareProps {
   value: SquareValue;
   onSquareClick: () => void;
 }
 
+// React.FCはReact.FunctionComponentの省略形
+// <SquareProps>は
+// ({ value, onSquareClick })は分割代入といい、JavaScriptの構文
+// 下記と同じ意味
+// const Square: React.FC<SquareProps> = (props) => {
+//   const value = props.value;
+//   const onSquareClick = props.onSquareClick;
+//   ...
+// }
 const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -16,6 +28,12 @@ const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
     </button>
   );
 };
+
+// ジェネリクスの例
+// function hoge<T, U>(x: T, y: U): U {
+//   return y;
+// }
+// hoge<number, string>(1, "a");
 
 interface BoardProps {
   xIsNext: boolean;
