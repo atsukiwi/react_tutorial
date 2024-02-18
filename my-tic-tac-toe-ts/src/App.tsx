@@ -46,6 +46,9 @@ const Board: React.FC<BoardProps> = ({ xIsNext, squares, onPlay }) => {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
+    // squaresの浅いコピーを作成
+    // 浅いコピーでも配列の要素に新しい値を割り当てているので、元の配列に影響を与えない
+    // https://developer.mozilla.org/ja/docs/Glossary/Shallow_copy
     const nextSquares = squares.slice();
     nextSquares[i] = xIsNext ? "X" : "O";
     onPlay(nextSquares);
@@ -60,6 +63,8 @@ const Board: React.FC<BoardProps> = ({ xIsNext, squares, onPlay }) => {
   }
 
   return (
+    // <>...</>はReact.Fragmentと呼ばれ、不要なdiv要素を生成しない
+    // Reactでは、複数の要素を返すことができないので、単一の要素で囲む必要がある
     <>
       <div className="status">{status}</div>
       <div className="board-row">
