@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Button from "@mui/material/Button";
 
 // 型定義を追加
 // これはユニオン型と呼ばれ、各"X"等はリテラル型と呼ばれる
@@ -97,6 +98,7 @@ function calculateWinner(squares: SquareValue[]): SquareValue {
     [0, 4, 8],
     [2, 4, 6],
   ];
+  // Arrayのfindメソッドで書き換え
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
@@ -107,6 +109,7 @@ function calculateWinner(squares: SquareValue[]): SquareValue {
 }
 
 const Game: React.FC = () => {
+  // 最初はhistoryは１つの要素だけを含む２次元配列
   const [history, setHistory] = useState<SquareValue[][]>([
     Array(9).fill(null),
   ]);
@@ -128,7 +131,13 @@ const Game: React.FC = () => {
     const description = move ? `Go to move #${move}` : "Go to game start";
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <Button
+          variant="contained"
+          onClick={() => jumpTo(move)}
+          sx={{ margin: "2px 0" }}
+        >
+          {description}
+        </Button>
       </li>
     );
   });
